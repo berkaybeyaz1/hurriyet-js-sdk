@@ -42,7 +42,7 @@ function getQueryString(parameters){
 	return queryString;
 }
 
-function getArticles(args) {
+function getArticles(args = {}) {
 	let {
 		articleId,
 		filter,
@@ -77,5 +77,37 @@ function getArticles(args) {
 	}
 }
 
-getArticles({ articleId: 40315805});
+function getPaths(args = {}) {
+	let {
+		pathId,
+		filter,
+		select,
+		top,
+	} = args;
 
+	let parameters = [];
+
+	if (filter) {
+		parameters.push({ filter });
+	}
+
+	if (pathId) {
+		if (select) {
+			parameters.push({ select });
+		}
+
+		if (top) {
+			parameters.push({ top });
+		}
+
+		sendRequest({ 
+			endpoint: 'paths/' + pathId,
+			parameters: parameters
+		});
+	} else {
+		sendRequest({ 
+			endpoint: 'paths',
+			parameters: parameters
+		});
+	}
+}
