@@ -26,7 +26,7 @@ function sendRequest({ endpoint, parameters }) {
 
 function getQueryString(parameters){
 	if(!parameters || parameters.constructor !== Array){
-		console.log('Parameters should be array')
+		console.log('Parameters should be array.');
 		return '';
 	}
 	let queryString = ''
@@ -261,5 +261,37 @@ function getWriters(args = {}) {
 			endpoint: 'writers',
 			parameters: parameters
 		});
+	}
+}
+
+function search(args = {}) {
+	let {
+		skip,
+		top,
+		sort,
+		keyword,
+	} = args;
+
+	let parameters = [];
+
+	if (keyword) {
+		if (skip) {
+			parameters.push({ skip });
+		}
+
+		if (top) {
+			parameters.push({ top });
+		}
+
+		if (sort) {
+			parameters.push({ sort });
+		}
+
+		sendRequest({ 
+			endpoint: 'search/' + keyword,
+			parameters: parameters
+		});
+	} else {
+		console.log('You have to support a keyword to this API call.');
 	}
 }
