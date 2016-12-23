@@ -19,7 +19,7 @@ class HurriyetAPIWrapper {
 
 	sendRequest({ endpoint, parameters }) {
 		return new Promise((resolve,reject) => {
-			const endPoint = API_LOCATION + '/'+endpoint+'/'+getQueryString(parameters)
+			const endPoint = API_LOCATION + '/'+endpoint+'/'+ this.getQueryString(parameters)
 			fetch(endPoint, {
 				method: 'GET',
 				headers,
@@ -74,12 +74,12 @@ class HurriyetAPIWrapper {
 				parameters.push({ top });
 			}
 
-			sendRequest({ 
+			this.sendRequest({ 
 				endpoint: 'articles/' + articleId,
 				parameters: parameters
 			});
 		} else {
-			sendRequest({ 
+			this.sendRequest({ 
 				endpoint: 'articles',
 				parameters: parameters
 			});
@@ -109,12 +109,12 @@ class HurriyetAPIWrapper {
 				parameters.push({ top });
 			}
 
-			sendRequest({ 
+			this.sendRequest({ 
 				endpoint: 'paths/' + pathId,
 				parameters: parameters
 			});
 		} else {
-			sendRequest({ 
+			this.sendRequest({ 
 				endpoint: 'paths',
 				parameters: parameters
 			});
@@ -144,12 +144,12 @@ class HurriyetAPIWrapper {
 				parameters.push({ top });
 			}
 
-			sendRequest({ 
+			this.sendRequest({ 
 				endpoint: 'columns/' + columnId,
 				parameters: parameters
 			});
 		} else {
-			sendRequest({ 
+			this.sendRequest({ 
 				endpoint: 'columns',
 				parameters: parameters
 			});
@@ -162,7 +162,7 @@ class HurriyetAPIWrapper {
 
 		let parameters = [];
 
-		sendRequest({ 
+		this.sendRequest({ 
 			endpoint: 'date',
 			parameters: parameters
 		});
@@ -191,12 +191,12 @@ class HurriyetAPIWrapper {
 				parameters.push({ top });
 			}
 
-			sendRequest({ 
+			this.sendRequest({ 
 				endpoint: 'newsphotogalleries/' + galleryId,
 				parameters: parameters
 			});
 		} else {
-			sendRequest({ 
+			this.sendRequest({ 
 				endpoint: 'newsphotogalleries',
 				parameters: parameters
 			});
@@ -226,12 +226,12 @@ class HurriyetAPIWrapper {
 				parameters.push({ top });
 			}
 
-			sendRequest({ 
+			this.sendRequest({ 
 				endpoint: 'pages/' + pageId,
 				parameters: parameters
 			});
 		} else {
-			sendRequest({ 
+			this.sendRequest({ 
 				endpoint: 'pages',
 				parameters: parameters
 			});
@@ -261,12 +261,12 @@ class HurriyetAPIWrapper {
 				parameters.push({ top });
 			}
 
-			sendRequest({ 
+			this.sendRequest({ 
 				endpoint: 'writers/' + writerId,
 				parameters: parameters
 			});
 		} else {
-			sendRequest({ 
+			this.sendRequest({ 
 				endpoint: 'writers',
 				parameters: parameters
 			});
@@ -296,7 +296,7 @@ class HurriyetAPIWrapper {
 				parameters.push({ sort });
 			}
 
-			sendRequest({ 
+			this.sendRequest({ 
 				endpoint: 'search/' + keyword,
 				parameters: parameters
 			});
