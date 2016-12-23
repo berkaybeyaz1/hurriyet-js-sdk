@@ -158,3 +158,38 @@ function getDates(args = {}) {
 		parameters: parameters
 	});
 }
+
+function getNewsPhotoGalleries(args = {}) {
+	let {
+		galleryId,
+		filter,
+		select,
+		top,
+	} = args;
+
+	let parameters = [];
+
+	if (filter) {
+		parameters.push({ filter });
+	}
+
+	if (galleryId) {
+		if (select) {
+			parameters.push({ select });
+		}
+
+		if (top) {
+			parameters.push({ top });
+		}
+
+		sendRequest({ 
+			endpoint: 'newsphotogalleries/' + galleryId,
+			parameters: parameters
+		});
+	} else {
+		sendRequest({ 
+			endpoint: 'newsphotogalleries',
+			parameters: parameters
+		});
+	}
+}
