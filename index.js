@@ -42,22 +42,40 @@ function getQueryString(parameters){
 	return queryString;
 }
 
-function getArticles({ articleId, filter, select, top }) {
+function getArticles(args) {
+	let {
+		articleId,
+		filter,
+		select,
+		top,
+	} = args;
+
 	let parameters = [];
-	( filter ) ? parameters.push({filter}):null;
-	( select ) ? parameters.push({select}):null;
-	( top ) ? parameters.push({top}):null;
+
+	if (filter) {
+		parameters.push({ filter });
+	}
+
 	if (articleId) {
+		if (select) {
+			parameters.push({ select });
+		}
+
+		if (top) {
+			parameters.push({ top });
+		}
+
 		sendRequest({ 
 			endpoint: 'articles/' + articleId,
 			parameters: parameters
-		}).then(() => {console.log('siyu')});
-	}else{
+		});
+	} else {
 		sendRequest({ 
 			endpoint: 'articles',
 			parameters: parameters
-		}).then(() => {console.log('siyu')});
+		});
 	}
 }
 
+getArticles({ articleId: 40315805});
 
