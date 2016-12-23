@@ -228,3 +228,38 @@ function getPages(args = {}) {
 		});
 	}
 }
+
+function getWriters(args = {}) {
+	let {
+		writerId,
+		filter,
+		select,
+		top,
+	} = args;
+
+	let parameters = [];
+
+	if (filter) {
+		parameters.push({ filter });
+	}
+
+	if (writerId) {
+		if (select) {
+			parameters.push({ select });
+		}
+
+		if (top) {
+			parameters.push({ top });
+		}
+
+		sendRequest({ 
+			endpoint: 'writers/' + writerId,
+			parameters: parameters
+		});
+	} else {
+		sendRequest({ 
+			endpoint: 'writers',
+			parameters: parameters
+		});
+	}
+}
