@@ -60,4 +60,4 @@ function getArticles({ articleId, filter, select, top }) {
 	}
 }
 
-getArticles();
+
