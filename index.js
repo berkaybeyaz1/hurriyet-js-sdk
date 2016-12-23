@@ -111,3 +111,38 @@ function getPaths(args = {}) {
 		});
 	}
 }
+
+function getColumns(args = {}) {
+	let {
+		columnId,
+		filter,
+		select,
+		top,
+	} = args;
+
+	let parameters = [];
+
+	if (filter) {
+		parameters.push({ filter });
+	}
+
+	if (columnId) {
+		if (select) {
+			parameters.push({ select });
+		}
+
+		if (top) {
+			parameters.push({ top });
+		}
+
+		sendRequest({ 
+			endpoint: 'columns/' + columnId,
+			parameters: parameters
+		});
+	} else {
+		sendRequest({ 
+			endpoint: 'columns',
+			parameters: parameters
+		});
+	}
+}
