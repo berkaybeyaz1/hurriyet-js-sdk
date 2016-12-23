@@ -193,3 +193,38 @@ function getNewsPhotoGalleries(args = {}) {
 		});
 	}
 }
+
+function getPages(args = {}) {
+	let {
+		pageId,
+		filter,
+		select,
+		top,
+	} = args;
+
+	let parameters = [];
+
+	if (filter) {
+		parameters.push({ filter });
+	}
+
+	if (pageId) {
+		if (select) {
+			parameters.push({ select });
+		}
+
+		if (top) {
+			parameters.push({ top });
+		}
+
+		sendRequest({ 
+			endpoint: 'pages/' + pageId,
+			parameters: parameters
+		});
+	} else {
+		sendRequest({ 
+			endpoint: 'pages',
+			parameters: parameters
+		});
+	}
+}
