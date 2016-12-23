@@ -146,3 +146,15 @@ function getColumns(args = {}) {
 		});
 	}
 }
+
+function getDates(args = {}) {
+	let {
+	} = args;
+
+	let parameters = [];
+
+	sendRequest({ 
+		endpoint: 'date',
+		parameters: parameters
+	});
+}
